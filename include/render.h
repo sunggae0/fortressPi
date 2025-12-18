@@ -22,6 +22,12 @@
 #define ST7789_MADCTL  0x36
 #define ST7789_COLMOD  0x3A
 
+typedef struct bitmap{
+    uint16_t width;
+    uint16_t height;
+    uint16_t* bitmap;
+} bitmap;
+
 extern uint16_t screen[240][240];
 
 void writeCommand(uint8_t cmd);
@@ -29,5 +35,7 @@ void writeCommand(uint8_t cmd);
 void writeData(uint8_t data);
 
 void st7789_init();
+
+void render_put(uint16_t x, uint16_t y, bitmap img);
 
 void render_screen(uint16_t color);

@@ -7,11 +7,6 @@
 #define W 240
 #define H 240
 
-typedef struct bitmap{
-    uint16_t width;
-    uint16_t height;
-    uint16_t* bitmap;
-} bitmap;
 
 void writeCommand(uint8_t cmd) {
     bcm2835_gpio_clr(TFT_DC);
