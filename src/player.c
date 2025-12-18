@@ -1,0 +1,29 @@
+#include "player.h"
+#include "render.h"
+
+extern bool input[6];
+
+void player_init(Player* p, uint16_t angle, uint16_t power, uint16_t state, const Bitmap* sprite) {
+    p->angle = angle;
+    p->power = power;
+    p->state = state;
+    p->sprite = sprite;
+}
+
+void player_handle_input(Player* p, int key) {
+    // 예: WASD 이동
+    if (input[0]) p->angle += 5;
+    if (input[1]) p->angle -= 5;
+    if (input[2]) p->power -= 1;
+    if (input[3]) p->power += 1;
+}
+
+void player_update(Player* p) {
+    // 지금은 입력에서 바로 위치가 바뀌므로 update는 비어있어도 됩니다.
+    // 나중에: 무적 시간, 애니메이션 프레임, 상태이상 등은 여기서 처리.
+    (void)p;
+}
+
+void player_render(const Player* p) {
+    render_draw_rectangle(10, 200, 30, 30);
+}

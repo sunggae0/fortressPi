@@ -10,8 +10,10 @@
 #define JOY_LEFT    27
 #define JOY_RIGHT   23
 #define BTN_5	    5
+#define BTN_6	    6
 
 uint16_t screen[240][240] = {0x0000,};
+bool input[6] = {false, false, false, false, false, false};
 
 int x = 125;
 int y = 125;
@@ -105,14 +107,26 @@ int main(void){
     
     bcm2835_gpio_fsel(BTN_5, BCM2835_GPIO_FSEL_INPT);
     bcm2835_gpio_set_pud(BTN_5, BCM2835_GPIO_PUD_UP);
-    
+
+    bcm2835_gpio_fsel(BTN_6, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_set_pud(BTN_6, BCM2835_GPIO_PUD_UP);
+
     ballFlag = false;
 
     
     st7789_init();
 	while(1){
-	clear();
-	render_put(20,7,&emoji_bitmap);
-	render_screen();
-}
+		input = {
+			!bcm2835_gpio_lev(JOY_UP),
+			!bcm2835_gpio_lev(JOY_DOWN),
+			!bcm2835_gpio_lev(JOY_LEFT),
+			!bcm2835_gpio_lev(JOY_RIGHT),
+			!bcm2835_gpio_lev(BTN_5),
+			!bcm2835_gpio_lev(BTN_6)
+		};
+
+		clear();
+		render_put(20,7,&emoji_bitmap);
+		render_screen();
+	}
 }

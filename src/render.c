@@ -68,6 +68,13 @@ void render_put(uint16_t x, uint16_t y, bitmap* img){
     }
 }
 
+void render_draw_rectangle(int x, int y, int w, int h){
+    for (int i=y; i<y+h; i++){
+        for (int j=x; j<x+w; j++){
+             if (i>=0 && i<H && j>=0 && j<W) screen[i][j] = 0xFFFF;
+         }
+     }
+ }
 
 void render_screen() {
     writeCommand(ST7789_RASET);
