@@ -3,6 +3,7 @@
 #include "render.h"
 #include <stdbool.h>
 #include <unistd.h>
+#include "emoji.h"
 
 #define JOY_UP      17
 #define JOY_DOWN    22
@@ -36,7 +37,7 @@ void draw(uint16_t x, uint16_t y, bitmap img){
 	uint16_t idx = 0;
 	for (uint16_t i=y; i<y+img.height; i++){
 		for (uint16_t j=x; j<x+img.width; j++){
-			if (i<240 && j<240) screen[i][j] = img.pixels[idx];
+			if (i<240 && j<240) screen[i][j] = img.bitmap[idx];
 			idx++;
 		}
 	}
@@ -74,4 +75,44 @@ void drawCircle(int cx, int cy, int r){
 	    d += 2*(y-x) + 1;
 	}
     }
+}
+
+
+int main(void){
+
+	if (!bcm2835_init()) {
+        printf("bcm2835_init failed. Are you running as root?\n");
+        return 1;
+    }
+    
+    bcm2835_gpio_fsel(TFT_DC, BCM2835_GPIO_FSEL_OUTP);
+    bcm2835_gpio_fsel(TFT_RST, BCM2835_GPIO_FSEL_OUTP);
+    bcm2835_gpio_fsel(26, BCM2835_GPIO_FSEL_OUTP);
+    bcm2835_gpio_set(26);
+    
+    //joystick GPIO Setting: 
+    bcm2835_gpio_fsel(JOY_UP, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_set_pud(JOY_UP, BCM2835_GPIO_PUD_UP);
+
+    bcm2835_gpio_fsel(JOY_DOWN, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_set_pud(JOY_DOWN, BCM2835_GPIO_PUD_UP);
+
+    bcm2835_gpio_fsel(JOY_LEFT, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_set_pud(JOY_LEFT, BCM2835_GPIO_PUD_UP);
+
+    bcm2835_gpio_fsel(JOY_RIGHT, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_set_pud(JOY_RIGHT, BCM2835_GPIO_PUD_UP);
+    
+    bcm2835_gpio_fsel(BTN_5, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_set_pud(BTN_5, BCM2835_GPIO_PUD_UP);
+    
+    ballFlag = false;
+
+    
+    st7789_init();
+
+	clear();
+	render_put(20,7,&emoji_bitmap);
+	render_screen;
+
 }
