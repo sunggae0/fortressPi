@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <bcm2835.h>
-#include "st7789.h"
+#include "render.h"
 #include <stdbool.h>
 #include <unistd.h>
 
