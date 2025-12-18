@@ -25,7 +25,7 @@ int ball_x=0;
 
 void clear(){
 	for (int i=0; i<240; i++){
-		for (int j=0; j<240; j++) screen[i][j] = 0xCDCD;
+		for (int j=0; j<240; j++) screen[i][j] = 0xCDFF;
 	}
 }
 
@@ -110,9 +110,9 @@ int main(void){
 
     
     st7789_init();
-
+	while(1){
 	clear();
 	render_put(20,7,&emoji_bitmap);
-	render_screen;
-
+	render_screen();
+}
 }
