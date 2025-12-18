@@ -58,10 +58,12 @@ void st7789_init() {
 
 
 void render_put(uint16_t x, uint16_t y, bitmap* img){
+    uint16_t idx = 0;
     for (uint16_t i=y; i<y+img->height; i++){
         for (uint16_t j=x; j<x+img->width; j++){
             if (i>=H || j>=W) continue;
-            screen[i][j] = img->pixels[(i-y)*img->width + (j-x)];
+            screen[i][j] = img->pixels[idx];
+            idx++;
         }
 }
 

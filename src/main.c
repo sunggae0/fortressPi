@@ -36,7 +36,7 @@ void draw(uint16_t x, uint16_t y, bitmap img){
 	uint16_t idx = 0;
 	for (uint16_t i=y; i<y+img.height; i++){
 		for (uint16_t j=x; j<x+img.width; j++){
-			if (i<240 && j<240) screen[i][j] = img.bitmap[idx];
+			if (i<240 && j<240) screen[i][j] = img.pixels[idx];
 			idx++;
 		}
 	}
