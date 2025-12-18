@@ -25,7 +25,7 @@
 typedef struct bitmap{
     uint16_t width;
     uint16_t height;
-    uint16_t* bitmap;
+    uint16_t* pixels;
 } bitmap;
 
 extern uint16_t screen[240][240];
