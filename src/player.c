@@ -8,6 +8,8 @@ void player_init(Player* p, uint16_t angle, uint16_t power, uint16_t state) {
     p->angle = angle;
     p->power = power;
     p->state = state;
+    p->x = 10;
+    p->y = 200;
 }
 
 void player_handle_input(Player* p, int key) {
@@ -25,5 +27,5 @@ void player_update(Player* p) {
 }
 
 void player_render(const Player* p) {
-    render_draw_rectangle(10, 200, 30, 30);
+    render_draw_rectangle(p->x, p->y, 30, 30);
 }

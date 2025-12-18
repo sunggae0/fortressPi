@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include "player.h"
+#include "bullet.h"
 
 
 #define JOY_UP      17
@@ -127,7 +128,16 @@ int main(void){
 		clear();
 
 		Player player;
+		Bullet bullet;
+
 		player_init(&player, 45, 10, 0);
+
+		if (input[4]){
+			bullet_init(&bullet, player.x, player.y, player.angle, player.power, player.state);
+		}
+
+		player_update(&player);
+
 		player_render(&player);
 		
 		render_screen();

@@ -5,9 +5,10 @@
 #include "render.h"
 
 typedef struct {
+    uint16_t x;
+    uint16_t y;
     uint16_t angle;
     uint16_t power;
-
     uint16_t state;
     
 } Player;
