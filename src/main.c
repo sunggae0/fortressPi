@@ -24,7 +24,7 @@ int ball_x=0;
 
 void clear(){
 	for (int i=0; i<240; i++){
-		for (int j=0; j<240; j++) screen[i][j] = 0x0000;
+		for (int j=0; j<240; j++) screen[i][j] = 0xCDCD;
 	}
 }
 

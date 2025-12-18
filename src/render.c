@@ -1,8 +1,17 @@
 #include <bcm2835.h>
 #include <stdio.h>
+#include <unistd.h>
 
-#include "st7789.h"
+#include "render.h"
 
+#define W 240
+#define H 240
+
+typedef struct bitmap{
+    uint16_t width;
+    uint16_t height;
+    uint16_t* bitmap;
+} bitmap;
 
 void writeCommand(uint8_t cmd) {
     bcm2835_gpio_clr(TFT_DC);
@@ -52,6 +61,14 @@ void st7789_init() {
     delay(100);
 }
 
+
+void render_put(uint16_t x, uint16_t y, bitmap img){
+    for (uint16_t i=y; i<img.height; i++){
+        for (uint16_t j=x; j<img.width; j++){
+            if (i<0 || i>=H || j<0 || j>=W) continue;
+            screen[i][j] = img.bitmap[i-y][j-x];
+        }
+}
 
 
 void render_screen() {
