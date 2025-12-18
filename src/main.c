@@ -3,7 +3,8 @@
 #include "render.h"
 #include <stdbool.h>
 #include <unistd.h>
-#include "emoji.h"
+#include "player.h"
+
 
 #define JOY_UP      17
 #define JOY_DOWN    22
@@ -116,17 +117,19 @@ int main(void){
     
     st7789_init();
 	while(1){
-		input = {
-			!bcm2835_gpio_lev(JOY_UP),
-			!bcm2835_gpio_lev(JOY_DOWN),
-			!bcm2835_gpio_lev(JOY_LEFT),
-			!bcm2835_gpio_lev(JOY_RIGHT),
-			!bcm2835_gpio_lev(BTN_5),
-			!bcm2835_gpio_lev(BTN_6)
-		};
+		input[0]=!bcm2835_gpio_lev(JOY_UP);
+		input[1]=!bcm2835_gpio_lev(JOY_DOWN);
+		input[2]=!bcm2835_gpio_lev(JOY_LEFT);
+		input[3]=!bcm2835_gpio_lev(JOY_RIGHT);
+		input[4]=!bcm2835_gpio_lev(BTN_5);
+		input[5]=!bcm2835_gpio_lev(BTN_6);
 
 		clear();
-		render_put(20,7,&emoji_bitmap);
+
+		Player player;
+		player_init(&player, 45, 10, 0);
+		player_render(&player);
+		
 		render_screen();
 	}
 }

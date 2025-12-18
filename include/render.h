@@ -2,7 +2,7 @@
 
 #include <bcm2835.h>
 #include <stdio.h>
-#include "emoji.h"
+
 
 // Pin definitions (Adjust these for your specific hardware)
 #define TFT_CS      8
@@ -22,6 +22,12 @@
 #define ST7789_RAMWR   0x2C
 #define ST7789_MADCTL  0x36
 #define ST7789_COLMOD  0x3A
+
+typedef struct bitmap {
+    uint16_t width;
+    uint16_t height;
+    uint16_t* bitmap;
+} bitmap;
 
 extern uint16_t screen[240][240];
 
