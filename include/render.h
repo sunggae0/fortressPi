@@ -36,6 +36,6 @@ void writeData(uint8_t data);
 
 void st7789_init();
 
-void render_put(uint16_t x, uint16_t y, bitmap img);
+void render_put(uint16_t x, uint16_t y, bitmap* img);
 
 void render_screen(uint16_t color);

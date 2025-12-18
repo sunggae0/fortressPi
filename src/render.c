@@ -65,6 +65,7 @@ void render_put(uint16_t x, uint16_t y, bitmap* img){
             screen[i][j] = img->pixels[idx];
             idx++;
         }
+    }
 }
 
 
