@@ -139,6 +139,8 @@ int main(void){
 
 		player_render(&player);
 		bullet_update(&bullet);
+		bullet_render(&bullet);
+		
 		render_draw_rectangle(player.x+30, player.y-30, 10, player.power*3);
 		
 		render_screen();
