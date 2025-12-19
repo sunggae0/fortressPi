@@ -1,4 +1,4 @@
-#define MAX_BULLETS 64
+#pragma once
 
 #include <unistd.h>
 #include "render.h"
