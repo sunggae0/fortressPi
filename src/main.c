@@ -136,12 +136,13 @@ int main(void){
 		}
 
 		player_update(&player);
+		player_handle_input(&player, 0);
 
 		player_render(&player);
 		bullet_update(&bullet);
 		bullet_render(&bullet);
-		
-		render_draw_rectangle(player.x+30, player.y-30, 10, player.power*3);
+
+		render_draw_rectangle(player.x+30, player.y-30, 3, player.power*3);
 		
 		render_screen();
 	}
