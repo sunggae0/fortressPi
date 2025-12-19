@@ -118,6 +118,7 @@ int main(void){
     Player player;
 	Bullet bullet;
 
+	player_init(&player, 45, 10, 0);
     st7789_init();
 	while(1){
 		input[0]=!bcm2835_gpio_lev(JOY_UP);
@@ -129,7 +130,7 @@ int main(void){
 
 		clear();
 
-		player_init(&player, 45, 10, 0);
+		
 
 		if (input[4]){
 			bullet_init(&bullet, player.x, player.y, player.angle, player.power, player.state);
