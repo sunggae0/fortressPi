@@ -6,8 +6,8 @@ void bullet_init(Bullet* b, uint16_t x, uint16_t y, uint16_t angle, uint16_t pow
     b->alive = 1;
     b->x = x;
     b->y = y;
-    b->angle = power;
-    b->power = state? 5:10;
+    b->angle = angle;
+    b->power = power;
     b->tick = 0;
 }
 
@@ -19,8 +19,8 @@ void bullet_update(Bullet* b) {
         return;
     }
     b->tick++;
-    b->x += 5;
-    b->y = 200 - b->angle*b->tick + b->tick*b->tick;
+    b->x += b->angle;
+    b->y = 200 - b->power*b->tick + b->tick*b->tick;
 }
 
 void bullet_render(const Bullet* b) {

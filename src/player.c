@@ -14,10 +14,10 @@ void player_init(Player* p, uint16_t angle, uint16_t power, uint16_t state) {
 
 void player_handle_input(Player* p, int key) {
     // 예: WASD 이동
-    if (input[0]) p->angle = (p->angle+5+90)%90;
-    if (input[1]) p->angle = (p->angle-5+90)%90;
-    if (input[2]) p->power -= 5;
-    if (input[3]) p->power += 5;
+    if (input[0]) p->angle = (p->angle+2+30)%30;
+    if (input[1]) p->angle = (p->angle-2+30)%30;
+    if (input[2]) p->power -= (p->angle+2+20)%20;
+    if (input[3]) p->power += (p->angle-2+20)%20;
 }
 
 void player_update(Player* p) {
