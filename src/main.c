@@ -14,7 +14,7 @@
 #define BTN_5	    5
 #define BTN_6	    6
 
-uint16_t screen[240][240] = {0x0000,};
+uint16_t screen[240][240] = {0};
 bool input[6] = {false, false, false, false, false, false};
 
 int x = 125;
@@ -50,7 +50,7 @@ void draw(uint16_t x, uint16_t y, bitmap img){
 void drawSquare(int x, int y, int size){
     for (int i=y; i<y+size; i++){
 		for (int j=x; j<x+size; j++){
-			 if (i>=0 && i<240 && j>=0 && j<240) screen[i][j] = 0xFFFF;
+			 if (i>=0 && i<240 && j>=0 && j<240) screen[i][j] = 0x0000;
 		 }
      }
  }
@@ -115,7 +115,9 @@ int main(void){
 
     ballFlag = false;
 
-    
+    Player player;
+	Bullet bullet;
+
     st7789_init();
 	while(1){
 		input[0]=!bcm2835_gpio_lev(JOY_UP);
@@ -126,9 +128,6 @@ int main(void){
 		input[5]=!bcm2835_gpio_lev(BTN_6);
 
 		clear();
-
-		Player player;
-		Bullet bullet;
 
 		player_init(&player, 45, 10, 0);
 

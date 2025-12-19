@@ -1,8 +1,11 @@
+#pragma once
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
 #include <unistd.h>
 #include "render.h"
+
 
 typedef struct {
     uint16_t x;
