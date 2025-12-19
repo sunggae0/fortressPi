@@ -16,6 +16,7 @@ void bullet_update(Bullet* b) {
     if (!b->alive) return;
     if (b->y > 240 || b->x > 240) {
         b->alive = 0;
+        b->tick = 0;
         return;
     }
     b->tick++;
