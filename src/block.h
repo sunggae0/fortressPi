@@ -2,7 +2,8 @@
 
 #include <unistd.h>
 #include "render.h"
-#iunclude "stdbool.h"
+#include "stdbool.h"
+#include "bullet.h"
 
 typedef struct {
     uint16_t x;
