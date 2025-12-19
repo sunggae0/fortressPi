@@ -124,7 +124,7 @@ int main(void){
 		input[1]=!bcm2835_gpio_lev(JOY_DOWN);
 		input[2]=!bcm2835_gpio_lev(JOY_LEFT);
 		input[3]=!bcm2835_gpio_lev(JOY_RIGHT);
-		input[4]=!bcm2835_gpio_lev(BTN_5);
+		input[4]=!bcm283sudo gpio_lev(BTN_5);
 		input[5]=!bcm2835_gpio_lev(BTN_6);
 
 		clear();
@@ -138,6 +138,7 @@ int main(void){
 		player_update(&player);
 
 		player_render(&player);
+		bullet_update(&bullet);
 		render_draw_rectangle(player.x+30, player.y-30, 10, player.power*3);
 		
 		render_screen();
