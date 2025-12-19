@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include "player.h"
 #include "bullet.h"
+#include "block.h"
 
 
 #define JOY_UP      17
@@ -142,6 +143,9 @@ int main(void){
 		player_render(&player);
 		bullet_update(&bullet);
 		bullet_render(&bullet);
+
+		block_collider(&bullet);
+		block_render(&blocks[0]);
 
 		render_draw_rectangle(player.x+30, player.y-30-player.power*3, 3, player.power*3);
 		

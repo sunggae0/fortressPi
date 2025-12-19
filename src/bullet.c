@@ -16,13 +16,17 @@ void bullet_init(Bullet* b, uint16_t x, uint16_t y, uint16_t angle, uint16_t pow
 
 void bullet_update(Bullet* b) {
     if (!b->alive) return;
+    if (b->y > 240 || b->x > 240) {
+        b->alive = 0;
+        return;
+    }
     b->tick++;
     b->x += 5;
     b->y = 200 - b->angle*b->tick + b->tick*b->tick;
 }
 
 void bullet_render(const Bullet* b) {
-    render_draw_rectangle(b->x, b->y, 5, 5);
+    if (b->alive) render_draw_rectangle(b->x, b->y, 5, 5);
 }
 
 
