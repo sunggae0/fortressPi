@@ -124,7 +124,7 @@ int main(void){
 		input[1]=!bcm2835_gpio_lev(JOY_DOWN);
 		input[2]=!bcm2835_gpio_lev(JOY_LEFT);
 		input[3]=!bcm2835_gpio_lev(JOY_RIGHT);
-		input[4]=!bcm283sudo gpio_lev(BTN_5);
+		input[4]=!bcm2835_gpio_lev(BTN_5);
 		input[5]=!bcm2835_gpio_lev(BTN_6);
 
 		clear();
