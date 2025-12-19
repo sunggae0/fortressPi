@@ -12,5 +12,5 @@ typedef struct {
 } Block;
 
 
-void block_render(const Block* b);
+void block_render(Block* b);
 void block_collider(Bullet* bullet);
