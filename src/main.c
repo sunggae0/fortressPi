@@ -148,7 +148,7 @@ int main(void){
 		block_render(&blocks[0]);
 
 		render_draw_rectangle(player.x+30, player.y-30-player.power*3, 3, player.power*3);
-		render_draw_rectangle(player.x, player.y-30, 3, player.x + player.power*3,3);
+		render_draw_rectangle(player.x, player.y-30, player.x + player.power*3,3);
 		
 		render_screen();
 	}
