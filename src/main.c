@@ -139,6 +139,7 @@ int main(void){
 		player_update(&player);
 
 		player_render(&player);
+		render_draw_rectangle(player.x+30, player.y-30, 10, player.power*3);
 		
 		render_screen();
 	}
