@@ -147,8 +147,8 @@ int main(void){
 		block_collider(&bullet);
 		block_render(&blocks[0]);
 
-		render_draw_rectangle(player.x+30, player.y-30-player.power*3, 3, player.power*3);
-		render_draw_rectangle(player.x, player.y-30, player.x + player.power*3,3);
+		render_draw_rectangle(player.x+50, player.y+30-player.power*3, 3, player.power*3);
+		render_draw_rectangle(player.x, player.y-30, player.x + player.angle*3,3);
 		
 		render_screen();
 	}
