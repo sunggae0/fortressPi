@@ -11,6 +11,7 @@ typedef struct {
     bool alive;
 } Block;
 
+extern Block blocks[9];
 
 void block_render(Block* b);
 void block_collider(Bullet* bullet);
