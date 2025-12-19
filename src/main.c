@@ -143,7 +143,7 @@ int main(void){
 		bullet_update(&bullet);
 		bullet_render(&bullet);
 
-		render_draw_rectangle(player.x+30, player.y-30, 3, player.power*3);
+		render_draw_rectangle(player.x+30, player.y-30-player.power*3, 3, player.power*3);
 		
 		render_screen();
 	}
