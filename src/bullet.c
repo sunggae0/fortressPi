@@ -20,7 +20,7 @@ void bullet_update(Bullet* b) {
     }
     b->tick++;
     b->x += b->angle;
-    b->y = 200 - b->power*b->tick + b->tick*b->tick;
+    b->y = 200 - b->power*(b->tick)/2 + (b->tick/2)*(b->tick/2);
 }
 
 void bullet_render(const Bullet* b) {
