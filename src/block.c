@@ -5,8 +5,8 @@
 Block blocks[9] = {
     {350,250,true},
     {320,280,true}, {350,280,true}, {380,280,true},
-    {290,310,true}, {320,310,true}, {350,310,true}, {380,310,true}, {410,310,true};
-}
+    {290,310,true}, {320,310,true}, {350,310,true}, {380,310,true}, {410,310,true}
+};
 
 
 void block_render(Block* b) {
